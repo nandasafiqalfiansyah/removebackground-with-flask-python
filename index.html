@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing App</title>
+    <!-- Favicon -->
+    <link href="https://www.favicon.cc/logo3d/904831.png" rel="icon" type="image/x-icon">
+    <!-- Include Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Include animate.css library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="bg-gray-100 p-8 md:p-16 relative">
+    <!-- Particle Effect Container -->
+    <div id="particles-js" class="absolute top-0 left-0 w-full h-full z-0"></div>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 z-10 relative">Image Processing App</h1>
+    <form id="uploadForm" enctype="multipart/form-data" class="mb-8 md:mb-16 z-10 relative">
+        <label for="imageInput" class="block mb-2">Choose an image:</label>
+        <input type="file" id="imageInput" name="image" accept="image/*" class="mb-4">
+        <br>
+        <button type="button" onclick="processImage()" class="bg-blue-500 text-white px-4 py-2 rounded relative">
+            Process Image
+            <div id="loadingSpinner" class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-10" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+        </button>
+        <button type="button" onclick="clearImage()" class="bg-red-500 text-white px-4 py-2 rounded md:ml-4 mt-2 md:mt-0">
+            Clear
+        </button>
+    </form>
+
+    <div id="result" style="display: none;" class="z-10 relative">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold mb-4">Results:</h2>
+        <p class="text-sm md:text-base lg:text-lg">Mean RGB values: <span id="rgbValues"></span></p>
+        <h3 class="text-lg md:text-xl lg:text-2xl font-bold mt-4">Original Image:</h3>
+        <img id="originalImage" alt="Original Image" class="mb-4 md:w-64 lg:w-80 xl:w-96 h-auto">
+        <h3 class="text-lg md:text-xl lg:text-2xl font-bold">Image with Removed Background:</h3>
+        <img id="removedBgImage" alt="Image with Removed Background" class="mb-4 md:w-64 lg:w-80 xl:w-96 h-auto">
+        <!-- Add a download button for the removed background image -->
+        <button id="downloadButton" style="margin-top: 10px;" onclick="downloadImage()" class="bg-green-500 text-white px-4 py-2 rounded">Download Image</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-gray-800 p-4 pr-20 text-center max-w-screen-md flex bottom-0 w-full ">
+        <p class="text-xs md:text-sm lg:text-base">© 2023 Nanda Safiq Alfiansyah. All rights reserved.</p>
+    </footer>
+
+    <script src="./src/script.js"></script>
+</body>
+</html>
